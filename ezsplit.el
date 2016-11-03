@@ -41,16 +41,19 @@ prefix argument, otherwise asks the user."
          (h (window-width)))
     (enlarge-window-horizontally (round (- fh h)))))
 
-(defun ez-rotate ()
+(defun ez-rotate (arg)
   "Rotates the current windows."
-  (interactive)
-  (dotimes (i (1- (count-windows)))
-    (let* ((w1 (elt (window-list) i))
-           (w2 (elt (window-list) (1+ i)))
-           (b1 (window-buffer w1))
-           (b2 (window-buffer w2)))
-      (set-window-buffer w1 b2)
-      (set-window-buffer w2 b1))))
+  (interactive "p")
+  (if (eq (count-windows) 1)
+      (message "Only one window!")
+    (let ((winlist (if (< arg 0) (window-list) (reverse (window-list)))))
+      (dotimes (i (1- (count-windows)))
+        (let* ((w1 (elt winlist i))
+               (w2 (elt winlist (1+ i)))
+               (b1 (window-buffer w1))
+               (b2 (window-buffer w2)))
+          (set-window-buffer w1 b2)
+          (set-window-buffer w2 b1))))))
 
 (provide 'ezsplit)
 ;;; ezsplit.el ends here
