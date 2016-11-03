@@ -1,11 +1,22 @@
 ;;; ezsplit.el --- a collection of window management functions.
 
+;; Copyright (C) 2016 Kyle K
+
+;; Author: 2kays
+;; Version: 0.1
+;; URL: http://github.com/2kays/ezsplit
+;; Package-Requires: ((emacs "24"))
+;; Keywords: convenience
+
+;; This file is not part of GNU Emacs.
+
 ;;; Commentary:
-;;; Provides many functions for easily handling Emacs windows, emphasizing using
-;;; few keystrokes to make managing a number of use cases easy.
-;;; 
+;; Provides many functions for easily handling Emacs windows, emphasizing using
+;; few keystrokes to make managing a number of use cases easy.
+;; 
 
 ;;; Code:
+
 
 (defun ez-fit-height (fraction)
   "Fits a window to 0.FRACTION of the height of the frame.  Accepts a numeric
